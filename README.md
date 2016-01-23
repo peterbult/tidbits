@@ -6,11 +6,11 @@ use across various programs.
 
 ### Included
 
-- ** Tools **:         Assorted mini-tools
-- ** String tools **:  Split-string; case-insensitive compare; etc
-- ** Vector tools **:  Calculate sum; average; etc of std-library
+- **Tools**:         Assorted mini-tools
+- **String tools**:  Split-string; case-insensitive compare; etc
+- **Vector tools**:  Calculate sum; average; etc of std-library
   containers
-- ** Vector segmenter **: Break a vector into pieces based on value of
+- **Vector segmenter**: Break a vector into pieces based on value of
   length.
 
 ### Usage
