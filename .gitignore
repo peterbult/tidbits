@@ -1,0 +1,9 @@
+# ignore build files
+*.[oa]
+
+# ignore temp files
+*~
+
+# ignore executables
+*.out
+
