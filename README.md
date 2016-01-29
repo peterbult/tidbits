@@ -12,6 +12,7 @@ use across various programs.
   containers
 - **Vector segmenter**: Break a vector into pieces based on value of
   length.
+- **Convert**: string/value conversion.  
 
 ### Usage
 
