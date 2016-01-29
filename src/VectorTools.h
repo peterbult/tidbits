@@ -72,5 +72,28 @@ namespace vectool {
         return stddev( std::begin(vec), std::end(vec) );
     }
 
+    
+
+    // 
+    // Compute r-th central moment of a (numeric) vector
+    //
+    template <typename it_type> 
+        typename std::iterator_traits<it_type>::value_type
+        central_moment( it_type first, it_type last, int rank )
+    {
+        double avg = average( first, last );
+        double mom = std::accumulate( first, last, 0.0, 
+                [&](const double &r, double v) { return r+pow( v-avg, rank ); }
+                ) / std::distance( first, last );
+        return mom;
+    }
+
+    template <typename vec_type>
+        typename vec_type::value_type
+        central_moment( vec_type& vec, double rank )
+    {
+        return central_moment( std::begin(vec), std::end(vec), rank );
+    }
+    
 }
 

@@ -76,6 +76,25 @@ bool test_stddev()
     return true;
 }
 
+bool test_central_moment()
+{
+    // Define a numeric vector
+    std::vector<double> vec1 = { 1.5, 2.5, 6.0, 10.0 };
+
+    // Evaluate 3rd central moment
+    double mom3_a = vectool::central_moment( vec1, 3 );
+
+    // Evaluate parial moment
+    double mom3_b = vectool::central_moment( vec1.begin(), vec1.begin()+3, 3 );
+
+    // Test results (by fussy compare)
+    if ( fabs( mom3_a - 16.87500) > 1e-5 ) return false;
+    if ( fabs( mom3_b -  4.07407) > 1e-5 ) return false;
+    
+    // All tests passed
+    return true;
+}
+
 int main(int argc, const char *argv[])
 {
     std::cout << " > Testing vector tools" << std::endl;
@@ -89,6 +108,9 @@ int main(int argc, const char *argv[])
 
     // Test assert function
     std::cout << "Testing [  stddev() ] ... passed: " << test_stddev() << std::endl;
+    
+    // Test assert function
+    std::cout << "Testing [  moment() ] ... passed: " << test_central_moment() << std::endl;
     
     return 0;
 }
