@@ -95,23 +95,45 @@ bool test_central_moment()
     return true;
 }
 
+bool test_skewness()
+{
+    // Define a numeric vector
+    std::vector<double> vec1 = { 1.5, 2.5, 6.0, 10.0 };
+
+    // Evaluate 3rd central moment
+    double sk1 = vectool::skewness( vec1 );
+
+    // Evaluate parial moment
+    double sk2 = vectool::skewness( vec1.begin(), vec1.begin()+3 );
+
+    // Test results (by fussy compare)
+    if ( fabs( sk1 - 0.454772) > 1e-6 ) return false;
+    if ( fabs( sk2 - 0.567317) > 1e-6 ) return false;
+    
+    // All tests passed
+    return true;
+}
+
 int main(int argc, const char *argv[])
 {
     std::cout << " > Testing vector tools" << std::endl;
     std::cout << std::boolalpha << std::endl;
 
     // Test assert function
-    std::cout << "Testing [   sum()   ] ... passed: " << test_sum() << std::endl;
+    std::cout << "Testing [    sum()    ] ... passed: " << test_sum() << std::endl;
 
     // Test assert function
-    std::cout << "Testing [ average() ] ... passed: " << test_average() << std::endl;
+    std::cout << "Testing [  average()  ] ... passed: " << test_average() << std::endl;
 
     // Test assert function
-    std::cout << "Testing [  stddev() ] ... passed: " << test_stddev() << std::endl;
+    std::cout << "Testing [   stddev()  ] ... passed: " << test_stddev() << std::endl;
     
     // Test assert function
-    std::cout << "Testing [  moment() ] ... passed: " << test_central_moment() << std::endl;
+    std::cout << "Testing [   moment()  ] ... passed: " << test_central_moment() << std::endl;
     
+    // Test assert function
+    std::cout << "Testing [  skewness() ] ... passed: " << test_skewness() << std::endl;
+
     return 0;
 }
 

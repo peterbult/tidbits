@@ -95,5 +95,26 @@ namespace vectool {
         return central_moment( std::begin(vec), std::end(vec), rank );
     }
     
+
+
+    // 
+    // Compute the skewness from its stat definition ( m3 / m2^(3/2) )
+    //
+    template <typename it_type> 
+        typename std::iterator_traits<it_type>::value_type
+        skewness( it_type first, it_type last )
+    {
+        double m3 = central_moment( first, last, 3 );
+        double m2 = central_moment( first, last, 2 );
+
+        return m3 / pow( m2, 1.5 );
+    }
+
+    template <typename vec_type>
+        typename vec_type::value_type
+        skewness( vec_type& vec )
+    {
+        return skewness( std::begin(vec), std::end(vec) );
+    }
 }
 
