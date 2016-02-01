@@ -62,5 +62,8 @@ namespace {
     template<> float       sto<float      >( std::string s ) { return std::stof( s ); }
     template<> double      sto<double     >( std::string s ) { return std::stod( s ); }
     template<> long double sto<long double>( std::string s ) { return std::stold( s ); }
+
+    // String type safeguard
+    template<> std::string sto<std::string>( std::string s ) { return s; }
 }
 
