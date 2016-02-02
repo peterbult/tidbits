@@ -1,4 +1,4 @@
-// 
+//
 // main.cpp
 // Test String tools
 //
@@ -24,7 +24,23 @@ bool test_split_extension()
     // Test results
     if ( split.first.compare("this/is/a.file") != 0 ) return false;
     if ( split.second.compare(".dat")          != 0 ) return false;
-    
+
+    // All tests passed
+    return true;
+}
+
+bool test_bad_split_extension()
+{
+    // Define a string
+    std::string path = "this/is/a/dotless-file";
+
+    // Split the string on the file extension
+    auto split = splitExtension( path );
+
+    // Test results
+    if ( split.first.compare("this/is/a/dotless-file") != 0    ) return false;
+    if ( split.second.empty()                          != true ) return false;
+
     // All tests passed
     return true;
 }
@@ -83,11 +99,13 @@ int main(int argc, const char *argv[])
     std::cout << "Testing [          split()           ] ... passed: " << test_split() << std::endl;
 
     // Test  split extension
-    std::cout << "Testing [      splitExtension()      ] ... passed: " << test_split_extension() << std::endl;    
+    std::cout << "Testing [      splitExtension()      ] ... passed: " << test_split_extension() << std::endl;
+
+    // Test  split extension
+    std::cout << "Testing [    bad splitExtension()    ] ... passed: " << test_bad_split_extension() << std::endl;
 
     // Test assert function
     std::cout << "Testing [ case_insensitive_compare() ] ... passed: " << test_case_insensitive_compare() << std::endl;
-    
+
     return 0;
 }
-

@@ -1,4 +1,4 @@
-// 
+//
 // StringTools.h
 // Tidbits
 //
@@ -15,10 +15,18 @@
 namespace {
     std::pair<std::string,std::string> splitExtension( std::string filename )
     {
-        size_t      pos_dot     = filename.find_last_of('.');
-        std::string basename    = filename.substr(0, pos_dot);
-        std::string extension   = filename.substr(pos_dot); 
+        // (Reverse) Find the position of the dot
+        size_t pos_dot = filename.find_last_of('.');
 
+        // If no dot is found: return an empty extension
+        if (pos_dot == std::string::npos)
+            return std::make_pair( filename, std::string() );
+
+        // Otherwise split the string on the dot
+        std::string basename    = filename.substr(0, pos_dot);
+        std::string extension   = filename.substr(pos_dot);
+
+        // And return as pair
         return std::make_pair( basename, extension );
     }
 
@@ -52,6 +60,5 @@ namespace {
         split(s, delim, elems);
         return elems;
     }
-    
-}
 
+}
