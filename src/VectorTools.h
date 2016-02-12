@@ -81,10 +81,19 @@ namespace vectool {
         typename std::iterator_traits<it_type>::value_type
         central_moment( it_type first, it_type last, int rank )
     {
+        // Safeguard: Check if rank is valid
+        if ( rank < 0 ) throw std::invalid_argument("rank " + rank + " < 0");
+        // Shortcut return
+        if ( rank == 0 ) return 1.0;
+        // Compute average
         double avg = average( first, last );
+        // Shortcut return
+        if ( rank == 1 ) return avg;
+        // Compute the rank > 1 central moment
         double mom = std::accumulate( first, last, 0.0, 
                 [&](const double &r, double v) { return r+pow( v-avg, rank ); }
                 ) / std::distance( first, last );
+        // Return product
         return mom;
     }
 
