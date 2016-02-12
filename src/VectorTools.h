@@ -82,7 +82,7 @@ namespace vectool {
         central_moment( it_type first, it_type last, int rank )
     {
         // Safeguard: Check if rank is valid
-        if ( rank < 0 ) throw std::invalid_argument("rank " + rank + " < 0");
+        if ( rank < 0 ) throw std::invalid_argument("rank " + std::to_string(rank) + " < 0");
         // Shortcut return
         if ( rank == 0 ) return 1.0;
         // Compute average
