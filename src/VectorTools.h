@@ -125,5 +125,30 @@ namespace vectool {
     {
         return skewness( std::begin(vec), std::end(vec) );
     }
+
+
+
+    // 
+    // Construct a linearly spaced vector
+    //
+    template <typename type>
+        typename std::vector<type> linspace( type min, type max, unsigned long samples, bool endpoint=false )
+    {
+        // Allocate the vector
+        std::vector<type> vec( samples );
+
+        // Prepare the spacing
+        type step = (max - min) / type(samples);
+
+        // Update step to include endpoint
+        if ( endpoint ) step *= type(samples) / type(samples-1);
+
+        // Fill the vector
+        for (unsigned long i = 0; i < samples; ++i)
+            vec[i] = min + i * step;
+
+        // Return the product vector
+        return vec;
+    }
 }
 
