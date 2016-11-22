@@ -11,6 +11,7 @@
 #pragma once
 #include <vector>
 #include <sstream>
+#include <algorithm>
 
 namespace {
     std::pair<std::string,std::string> splitExtension( std::string filename )
