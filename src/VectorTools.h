@@ -9,6 +9,7 @@
 //
 
 #pragma once
+#include <stdexcept>
 #include <numeric>
 #include <cmath>
 

@@ -1,4 +1,4 @@
 
 all: main.cpp
-	clang++ -std=c++11 -stdlib=libc++ main.cpp
+	g++ -std=c++11 main.cpp
 
