@@ -44,6 +44,14 @@ namespace {
         return s1.compare(s2);
     }
 
+    int smart_string_compare( std::string str1, std::string str2 )
+    {
+        if ( str1.size() > str2.size() )
+            return -1;
+        else
+            return string_case_insensitive_compare( str1, str2.substr(0, str1.size()) );
+    }
+
     //std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems) {
     // Generic base split function with output argument
     void split(const std::string &s, char delim, std::vector<std::string> &elems) {

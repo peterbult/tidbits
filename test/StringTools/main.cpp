@@ -66,6 +66,27 @@ bool test_case_insensitive_compare()
     return true;
 }
 
+bool test_smart_string_compare()
+{
+    // Define a string
+    std::string str = "DataFile";
+
+    // Split the string on the file extension
+    int r1 = smart_string_compare( str, "data" );
+    int r2 = smart_string_compare( str, "datafile" );
+    int r3 = smart_string_compare( str, "DataFile" );
+    int r4 = smart_string_compare( str, "DataFileSystem" );
+
+    // Test results
+    if ( r1 >= 0 ) return false;
+    if ( r2 != 0 ) return false;
+    if ( r3 != 0 ) return false;
+    if ( r4 != 0 ) return false;
+
+    // All tests passed
+    return true;
+}
+
 bool test_split()
 {
     // Define a string
@@ -106,6 +127,9 @@ int main(int argc, const char *argv[])
 
     // Test assert function
     std::cout << "Testing [ case_insensitive_compare() ] ... passed: " << test_case_insensitive_compare() << std::endl;
+
+    // Test smart compare
+    std::cout << "Testing [   smart_string_compare()   ] ... passed: " << test_smart_string_compare() << std::endl;
 
     return 0;
 }
